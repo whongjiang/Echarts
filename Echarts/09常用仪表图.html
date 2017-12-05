@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>绘制仪表图</title>
+  <!-- 1 引入echarts文件 -->
+  <script src="echarts.min.js"></script>
+</head>
+<body>
+<!-- 2 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="main" style="width:700px;height:400px;border: 1px solid red"></div>
+
+<script>
+  // 3 基于准备好的dom,初始化echarts实例(通过 echarts.init 方法初始化一个 echarts 实例)
+  var myChart = echarts.init(document.getElementById('main'));
+
+  // 4 为仪表盘配置参数
+  option = {
+    tooltip : {
+      formatter: "{a} <br/>{b} : {c}%"
+    },
+    toolbox: {
+      feature: {
+        dataView:{
+          show:true,
+        },
+        restore: {},
+        saveAsImage: {}
+      }
+    },
+    series: [
+      {
+        name: '业务指标',
+        type: 'gauge',
+        detail: {formatter:'{value}%'},
+        data: [{value:50, name: '完成率'}]
+      }
+    ]
+  };
+
+  // 5 使用刚指定的配置项和数据显示图表。setOption:用指定数据绘图
+  option.series[0].data[0].value = (Math.random() * 100).toFixed(2);
+  // JavaScript toFixed() 方法可把 Number 四舍五入为指定小数位数的数字
+  myChart.setOption(option,true);
+
+  
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Canvas</title>
+  <style>
+    canvas{
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+  <!-- canvas 是 HTML5 提供的一个用于展示绘图效果的标签 -->
+  <canvas id="myCanvas" width="400px" height="300px">
+    您的浏览器不支持canvas标签
+  </canvas>
+  <script>
+    //  绘图步骤:
+    /*1.获得 canvas 对象.*/
+    var cs=document.querySelector("#myCanvas");
+
+    /*2.调用 getContext 方法, 提供字符串参数 '2d'.*/
+    var ctx=cs.getContext("2d");
+
+    /*3.基本绘图命令*/
+    ctx.beginPath();
+    ctx.strokeStyle='blue';
+    var circle={
+      x:100,
+      y:100,
+      r:50
+    };
+
+    // 沿着坐标点(100,100)为圆心,半径为50px的圆顺时针方向绘制弧线
+    ctx.arc(circle.x,circle.y,circle.r,0,Math.PI*2,false);
+
+    ctx.stroke();
+
+  </script>
+</body>
+</html>

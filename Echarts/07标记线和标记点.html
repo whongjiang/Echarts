@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="echarts.common.min.js"></script>
+  <style>
+  h2,span{
+    color: red;
+  }
+  </style>
+</head>
+<body>
+  <h2>标记线和标记点</h2>
+  <h4>-标记线<span>markLine</span></h4>
+  <h4>-标记线的添加</h4>
+  <h4>-最大值,最小值,平均值的标记线</h4>
+  <br>
+
+
+  <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width:600px;height:400px;"></div>
+
+    <script type="text/javascript">
+
+        // 基于准备好的dom,初始化echarts实例(通过 echarts.init 方法初始化一个 echarts 实例)
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option = {
+          //标题
+          title: {  
+            text: 'ECharts 入门示例'
+          },
+          //工具箱
+          toolbox: {  
+            show:true,
+            feature:{
+              saveAsImage:{
+                show:true
+              }
+            }
+          },  
+          //提示框组件参数具体可参考官网上tooltip组件的配置项
+          tooltip:{
+            show:true,
+            trigger:'axis'
+          },
+          //图例
+          legend: {
+            data:['销量'],
+          },
+          //x轴
+          xAxis: {
+            data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+          },
+          //y轴
+          yAxis: {
+            name: '销量'
+          },
+          //数据
+          series: [{
+            name: '销量',
+            type: 'bar',
+            data: [5, 20, 36, 10, 10, 20],
+            markPoint:{
+              data: [
+                {type:'max',name:'最大值'},
+                {type:'min',name:'最小值'}
+              ]
+            },
+            markLine:{
+              data: [
+                {type:'average',name:'平均值'}
+              ]
+            }
+          }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。setOption:用指定数据绘图
+        myChart.setOption(option);
+    </script>
+</body>
+
+</html>
+</body>
+</html>
